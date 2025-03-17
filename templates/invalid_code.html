@@ -1,0 +1,60 @@
+{% extends 'flatpages/default.html' %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activation error</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            max-width: 600px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #dc3545; /* Red color for error */
+        }
+        p {
+            color: #555;
+        }
+        .button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px 0;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Code activation error</h1>
+    <p>Unfortunately, the one -time code you enter is invalid or expired. Please check the code and try again.</p>
+  <form style="...">
+    <input type="button" onclick="history.back();" class="btn btn-outline-secondary btm-sm"
+           value="Go back to the login page"/>
+  </form>
+</div>
+
+</body>
+</html>

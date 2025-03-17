@@ -1,0 +1,48 @@
+{% extends 'flatpages/default.html' %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% block title %}
+    <title>{{ post.title }}</title>
+{% endblock title %}
+        <style>
+        .reply-button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 7px;
+            cursor: pointer;
+        }
+    </style>
+
+{% block content %}
+    {% if media %}
+    <img src="{{ post.media.url }}" alt="Image">
+    {% endif %}
+    <h2>${{ post.price }}</h2>
+     <h3>{{ post.content }}</h3>
+    <button id="replyButton" class="reply-button"><a href="{% url 'write_reply' post.id %}">Reply</a></button>
+
+    {% if post.reply_set.all %}
+        <h2>All replies:</h2>
+          <table>
+          <tr>
+             <td>Reply content</td>
+             <td>Date</td>
+             <td>Aceppt/reject</td>
+          </tr>
+          {% for reply in post.reply_set.all %}
+          <tr>
+             <td><h3>{{ reply.text }}</h3></td>
+             <td>{{ reply.timecreated }}</td>
+             <td>{{ reply.acception_choice }}</td>
+          </tr>
+        {% endfor %}
+          </table>
+    {% else %}
+        <h2>Unfortunately, there is no replies yet...</h2>
+    {% endif %}
+
+{% endblock content %}

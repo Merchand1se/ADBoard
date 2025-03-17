@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home page</title>
+    <link rel="website icon" type="png" href="https://i.pinimg.com/originals/d6/55/08/d65508eade869cf82d0cd401d558c80c.png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            margin: 20px 0;
+        }
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #007bff;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+{% block title %}
+
+{% endblock title %}
+
+<nav>
+    <a href="{% url 'home' %}">Home</a>
+    {% if request.user.is_authenticated %}
+    <a href="{% url 'my-account' %}">Account</a>
+    {% else %}
+    <a href="{% url 'account_signup' %}">Sign in & Sign up</a>
+    {% endif %}
+    <a href="{% url 'post_create' %}">Create post</a>
+    <a href="{% url 'post_list' %}">Advert list</a>
+    {% if request.user.is_superuser %}
+    <a href="{% url 'admin:index' %}">Admin panel</a>
+    {% endif %}
+</nav>
+{% block content %}
+
+{% endblock content %}
+<footer>
+    <p>&copy; 2025 ADBoard. All rights are protected.</p>
+</footer>
+
+</body>
+</html>

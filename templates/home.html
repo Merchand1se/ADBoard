@@ -1,0 +1,19 @@
+{% extends 'flatpages/default.html' %}
+{% block title %}
+{% load static %}
+{{ Homepage }}
+{% endblock title %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}"/>
+<div class="container">
+    <h2>About us</h2>
+    <p>We are ADBoard team. Our project helps RPG gamers to buy and sell their game items.</p>
+
+    <h2>Support</h2>
+    <p>If there are some problems with our service, you can write a report to our support team! ADBoard_support@gmail.com</p>
+</div>
+{% endblock content %}
+
+
+

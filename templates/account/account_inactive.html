@@ -1,0 +1,25 @@
+<html lang="ru">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ваш аккаунт неактивен</title>
+
+<body>
+
+<div class="container">
+    <h1>Your account is not active!</h1>
+    <p>Unfortunately, your account is currently inactive. Please contact our support service to receive additional information and help restore access to your account.</p>
+
+    <h1 style="...">Paste your activation code</h1>
+  <form action="{% url 'confirm_user' %}" method="post" style="...">
+      {% csrf_token %}
+      <label>
+          <input class="text" type="text" name="code" placeholder="Your activation code">
+      </label>
+      <input type="submit" value="Confirm">
+  </form>
+    <br>
+    <a href="{% url 'home' %}" class="button">Back to the homepage</a>
+</div>
+
+</body>
+</html>

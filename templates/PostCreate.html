@@ -1,0 +1,88 @@
+{% extends 'flatpages/default.html' %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}
+    <title>Create your advert</title>
+    {% endblock title %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .form-group button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .form-group button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+{% block content %}
+<body>
+
+<div class="container">
+    <h1>Create advert</h1>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Create" />
+</form>
+</div>
+
+<script>
+    document.getElementById('adForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Предотвращаем стандартное поведение формы
+
+        if (title === '' || description === '' || category === '' || price === '') {
+            alert('Пожалуйста, заполните все обязательные поля.');
+            return;
+        }
+
+        // Здесь можно добавить код для отправки данных на сервер
+        alert(`Объявление создано:\nНазвание: ${title}\nОписание: ${description}\nКатегория: ${category}`);
+
+        // Очистка полей формы после создания объявления
+        document.getElementById('adForm').reset();
+    });
+</script>
+
+</body>
+{% endblock content %}
+</html>
