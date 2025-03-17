@@ -1,0 +1,9 @@
+asgiref
+Django
+django-allauth
+django-filter
+django-tinymce
+pillow
+pip
+sqlparse
+tzdata
